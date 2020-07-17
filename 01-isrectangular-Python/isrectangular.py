@@ -9,4 +9,4 @@ def fun_isrectangular(l):
         for i in l:
             if len(i) != t:
                 return False
-            return True
+        return True
