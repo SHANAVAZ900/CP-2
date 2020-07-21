@@ -12,4 +12,5 @@ def fun_eggcartons(eggs):
         return 0
     elif eggs % 12 == 0:
         return int(eggs/12)
-    return int(eggs//12)+1
+    else:
+        return int(eggs/12) + 1
