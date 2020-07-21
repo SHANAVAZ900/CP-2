@@ -5,6 +5,13 @@
 # assert(handToDice(422) == (4,2,2))
 # Hint: You might find // and % useful here, and also getKthDigit().
 
+
 def handtodice(hand):
-	# your code goes here
-	pass
+    # your code goes here
+    dice = hand
+    num1 = dice % 10
+    dice = dice//10
+    num2 = dice % 10
+    dice = dice//10
+    num3 = dice % 10
+    return num3, num2, num1
