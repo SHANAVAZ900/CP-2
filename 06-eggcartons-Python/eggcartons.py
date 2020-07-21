@@ -10,7 +10,7 @@ def fun_eggcartons(eggs):
         return 1
     if eggs == 0:
         return 0
-    else:
-        if eggs % 12 == 0:
-            return int(eggs/12)
-        return int(eggs/12) + 1
+
+    elif eggs % 12 == 0:
+        return int(eggs/12)
+    return int(eggs/12) + 1
