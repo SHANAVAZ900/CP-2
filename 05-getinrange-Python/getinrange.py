@@ -7,9 +7,12 @@
 
 def fun_getinrange(x, bound1, bound2):
     # your code goes here
-    if x < bound1 and x > bound2:
+    higher = max(bound1, bound2)
+    lower = min(bound1, bound2)
+
+    if x > lower and x < higher:
         return x
-    elif x < bound1 or x > bound1:
-        return bound1
+    elif x < lower:
+        return lower
     else:
-        return bound2
+        return higher
