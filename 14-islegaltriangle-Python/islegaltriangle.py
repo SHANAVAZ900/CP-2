@@ -5,6 +5,9 @@
 # than the third side, and further note that all sides of a legal triangle must be positive. Hint:
 # how can you determine the longest side, and how might that help?
 
+
 def islegaltriangle(s1, s2, s3):
-	# your code goes here
-	pass
+    if s1 > 0 and s2 > 0 and s3 > 0:
+        if s1+s2 > s3 and s2+s3 > s1 and s3+s1 > s1:
+            return True
+    return False
