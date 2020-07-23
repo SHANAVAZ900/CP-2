@@ -9,16 +9,16 @@
 import math
 
 
-def distannce(x1, y1, x2, y2):
+def distane(x1, y1, x2, y2):
     dist = math.sqrt(((x2-x1)**2+(y2-y1)**2))
     return dist
 
 
 def isrighttriangle(x1, y1, x2, y2, x3, y3):
     # your code goes here
-    x = distance(x1, y1, x2, y2)
-    y = distance(x1, y1, x3, y3)
-    z = distance(x2, y2, x3, y3)
+    x = distane(x1, y1, x2, y2)
+    y = distane(x1, y1, x3, y3)
+    z = distane(x2, y2, x3, y3)
     high = max(x, y, z)
     if high == x and math.isclose(x**2, (y**2+z**2)):
         return True
