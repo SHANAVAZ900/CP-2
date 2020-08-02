@@ -11,7 +11,7 @@ def fun_pascaltrianglevalue(row, col):
     if row < col:
         return 0
     if row == col:
-        return now
+        return row
     if col > (row-col)	:
         col = row-col
     for j in range(0, col):
