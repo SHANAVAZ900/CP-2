@@ -12,6 +12,7 @@ def fun_get_kth_digit(digit, k):
             return int(p[p.__len__() - k - 1])
         else:
             return 0
+
     else:
         k1 = -1 * digit
         k1 = str(k1)
