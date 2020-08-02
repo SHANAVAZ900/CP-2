@@ -8,7 +8,7 @@ def fun_get_kth_digit(digit, k):
 
     if digit > 0:
         p = str(digit)
-        if k < p__len__():
+        if k < p.__len__():
             return int(p[p.__len__() - k - 1])
         else:
             return 0
