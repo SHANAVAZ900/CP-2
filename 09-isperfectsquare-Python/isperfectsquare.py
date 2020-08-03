@@ -4,13 +4,17 @@
 # m**2 == n), and False otherwise. Do not crash on non-ints nor on negative ints.
 
 
+import math
+
+
 def isperfectsquare(n):
     # your code goes here
-    x = n // 2
-    y = set([x])
-    while x * x != n:
-        x = (x + (n // x)) // 2
-        if x in y:
+    if not isinstance(n, str) or n.isdigit():
+        if isinstance(n, str):
+            n = int(n)
+        if n >= 0:
+            root = math.sqrt(n)
+
+            if root**2 == n and '0' == str(root)[-1]:
+                return True
             return False
-        y.add(x)
-    return True
