@@ -17,14 +17,13 @@
 
 
 def matrixadd(L, M):
-    # Your code goes here
     if len(L) == len(M):
-        temp = True
-        for k in range(len(L)):
-            if len(l[k]) != len(M[k]):
-                temp = False
-        if temp:
-            res = [[L[i][j]+M[i][j]
-                    for j in range(len(L[0]))]for i in range(len(L))]
-            return res
+        flag = True
+        for x in range(len(L)):
+            if len(L[x]) != len(M[x]):
+                flag = False
+        if flag:
+            result = [[L[i][j] + M[i][j]
+                       for j in range(len(L[0]))] for i in range(len(L))]
+            return result
     return None
