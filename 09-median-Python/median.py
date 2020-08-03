@@ -6,10 +6,11 @@
 
 def median(a):
     # your code goes here
-    if len(a) == 0:
+    if not a:
         return None
-    a.sort()
-    if len(a) % 2 != 0:
-        return a[len[a] // 2]
-    med_val = (a[len(a)//2]+a[(len(a)//2)-1])/2
-    return med_val
+    l = len(a)
+    if l % 2 == 0:
+        module = (a[l//2] + a[(l//2)-1])/2
+    else:
+        module = a[l//2]
+    return module
