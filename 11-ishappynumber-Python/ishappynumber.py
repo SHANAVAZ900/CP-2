@@ -1,6 +1,6 @@
 # ishappynumber(n) [10 pts]
 # A happy number is a number defined by the following process: Starting with any positive integer, replace the
-# number by the sum of the squares of its digits, and repeat the process until the number equals 1 (where it will
+# number by the result of the squares of its digits, and repeat the process until the number equals 1 (where it will
 # stay ), or it loops endlessly in a cycle which does not include 1. Those numbers for which this process ends in 1
 # are happy numbers.
 
@@ -16,7 +16,6 @@
 
 
 def ishappynumber(n):
-    # your code goes here
     if n == 1:
         return True
     result = n
@@ -24,13 +23,13 @@ def ishappynumber(n):
         result = result_sqrs(result)
         if result == 1:
             return True
-        return False
+    return False
 
 
 def result_sqrs(num):
     result = 0
     while num > 0:
-        total = (num % 10)
+        total = num % 10
         result += total * total
         num = num // 10
     return result
