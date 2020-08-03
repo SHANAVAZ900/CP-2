@@ -20,7 +20,7 @@
 # helper functions that do part of the work, and then those helper functions will make our final
 # function much easier to write.
 
-# Also note: we will represent a hand of 3 dice as a single 3-digit integer. So the hand 4-3-2 will
+# Also note: we will represent a arm of 3 dice as a single 3-digit integer. So the arm 4-3-2 will
 # be represented by the integer 432. With that, let's start writing some code. Be sure to write
 # your functions in the same order as given here, since later functions will make use of earlier
 # ones!
@@ -29,8 +29,8 @@
 # the 2.5 bonus points! This function takes one value, the dice with all the rolls for a game of 3-Dice
 # Yahtzee. The function plays the game -- it does step1 and gets the first 3 dice (from the right), then it
 # does step2 twice (by calling playStep2, which you already wrote), and then it computes the score (by
-# calling score, which you already wrote). The function should return two values -- the resulting hand
-# and the score for that hand. For example:
+# calling score, which you already wrote). The function should return two values -- the resulting arm
+# and the score for that arm. For example:
 # assert(bonusPlayThreeDiceYahtzee(2312413) == (432, 4))
 # assert(bonusPlayThreeDiceYahtzee(2315413) == (532, 5))
 # assert(bonusPlayThreeDiceYahtzee(2345413) == (443, 18))
@@ -40,51 +40,53 @@
 
 
 def bonusplaythreediceyahtzee(dice):
-    # Your code goes here
-    f = str(dice)
-    dice = int(f[:-3])
-    arm = int(f[-3:])
-    for i in str(arm):
-        if(str(arm).count(i) == 3):
-            return(arm, 20 + (int(x)*3))
-    arm, dice = handplay(arm, dice)
-    k = list(dicehand(arm))
-    for i in k:
-        if k.count(i) == 3:
-            return (arm, 20 + (i * 3))
-        elif k.count(i) == 2:
-            return(arm, 10 + (i * 2))
-    return (arm, max(k))
+    d = str(dice)
+    arm = int(d[-3:])
+    dice = int(d[:-3])
+    for x in str(arm):
+        if (str(arm).count(x) == 3):
+            return (arm, 20 + (int(x) * 3))
+    arm, dice = armstep(arm, dice)
+    arm, dice = armstep(arm, dice)
+    h = list(armtodice(arm))
+    for x in h:
+        if h.count(x) == 3:
+            return (arm, 20 + (x * 3))
+        elif h.count(x) == 2:
+            return (arm, 10 + (x * 2))
+    return (arm, max(h))
 
 
-def handplay(arm, dice):
+def armstep(arm, dice):
+    arm1 = list(armtodice(arm))
     temp = 0
-    arm1 = list(dicehand(arm))
-
-    for i in arm1:
-        if arm1.count(i) > 1:
-            arm1 = [ans for ans in arm1 if ans == i]
+    for x in arm1:
+        if arm1.count(x) > 1:
+            arm1 = [val for val in arm1 if val == x]
     temp = 3-len(arm1)
+
     if len(arm1) == 3:
         arm1 = [max(arm1)]
         temp = 3-len(arm1)
+
     while temp > 0:
-        c = dice % 10
+        q = dice % 10
         dice //= 10
-        arm1.append(c)
+        arm1.append(q)
         temp -= 1
-        return dice_in_order(arm1[0], arm1[1], arm1[2]), dice
+
+    return order_dice(arm1[0], arm1[1], arm1[2]), dice
 
 
-def dice_in_order(p, q, r):
-    arm = [p, q, r]
-    high_pos = arm.index(max(arm))
-    low_pos = arm.index(min(arm))
-
-    mid_pos = [pos for pos in [0, 1, 2] if pos not in [high_pos, low_pos]][0]
-    return arm[high_pos] * 100 + arm[mid_pos] * 10 + arm[mid_pos]
-
-
-def dicehand():
+def armtodice(arm):
     arm = str(arm)
     return (int(arm[0]), int(arm[1]), int(arm[2]))
+
+
+def order_dice(a, b, c):
+    arm = [a, b, c]
+    high_pos = arm.index(max(arm))
+    lowe_pos = arm.index(min(arm))
+
+    mid_pos = [ind for ind in [0, 1, 2] if ind not in [high_pos, lowe_pos]][0]
+    return arm[high_pos] * 100 + arm[mid_pos] * 10 + arm[lowe_pos]
