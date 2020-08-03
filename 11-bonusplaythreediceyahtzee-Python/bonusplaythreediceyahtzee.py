@@ -45,7 +45,7 @@ def bonusplaythreediceyahtzee(dice):
     dice = int(f[:-3])
     arm = int(f[-3:])
     for i in str(arm):
-        if(str(arm).count(x) == 3):
+        if(str(arm).count(i) == 3):
             return(arm, 20 + (int(x)*3))
     arm, dice = handplay(arm, dice)
     k = list(dicehand(arm))
