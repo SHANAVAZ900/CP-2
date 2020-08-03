@@ -7,6 +7,14 @@
 # Hint: you may wish to use a similar approach to how you solved isPerfectSquare on the hw.
 # Another hint: This can be written using just one or two lines of Python.
 
+
+import math
+
+
 def largestperfectsquare(n):
-	# your code goes here
-	pass
+    # your code goes here
+    square_root = math.sqrt(n)
+
+    if square_root ** 2 == n and '0' == str(square_root).split('.')[1]:
+        return n
+    return int(str(square_root).split('.')[0])**2
