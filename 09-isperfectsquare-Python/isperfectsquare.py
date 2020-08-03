@@ -6,8 +6,11 @@
 
 def isperfectsquare(n):
     # your code goes here
-    if type(n) == int and n > 0:
-        for i in range(0, n):
-            if i**2 == n:
-                return True
-    return False
+    x = n // 2
+    y = set([x])
+    while x * x != n:
+        x = (x + (n // x)) // 2
+        if x in y:
+            return False
+        y.add(x)
+    return True
