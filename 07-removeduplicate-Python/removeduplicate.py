@@ -3,6 +3,13 @@
 # if given String is "JavaPython" then the output should be "JavPython".
 # The second or further occurrence of duplicate should be removed.
 
+
 def removeduplicate(text):
-	# Your code goes here
-	pass
+    # Your code goes here
+    ans = ""
+    for i in text:
+        if i in ans:
+            pass
+        else:
+            ans += i
+    return ans
