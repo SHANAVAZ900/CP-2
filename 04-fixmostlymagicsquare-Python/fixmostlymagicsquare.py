@@ -9,36 +9,34 @@
 def fixmostlymagicsquare(L):
     # Your code goes here
     row, diff = which_row(L)
-
     col, diff = which_col(L)
-
     L[row][col] += diff
     return L
 
 
 def which_row(L):
-    r = []
+    rows = []
     for i in L:
         add = 0
         for j in i:
             add += j
         if add in rows:
-            right = add
+            correct = add
         rows.append(add)
     for i in range(len(rows)):
-        if rows[i] != right:
-            return i, right-rows[i]
+        if rows[i] != correct:
+            return i, correct-rows[i]
 
 
 def which_col(L):
-    c = []
+    cols = []
     for i in range(len(L)):
         add = 0
         for j in range(len(L)):
             add += L[j][i]
-        if add in c:
-            right = add
-        c.append(add)
-    for i in range(len(c)):
-        if c[i] != right:
-            return i, right-c[i]
+        if add in cols:
+            correct = add
+        cols.append(add)
+    for i in range(len(cols)):
+        if cols[i] != correct:
+            return i, correct-cols[i]
