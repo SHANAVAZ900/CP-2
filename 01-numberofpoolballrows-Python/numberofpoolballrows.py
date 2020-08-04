@@ -17,4 +17,4 @@ def fun_numberofpoolballrows(balls):
             add += res
         else:
             break
-    return c
+    return num
