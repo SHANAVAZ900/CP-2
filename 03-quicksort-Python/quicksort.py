@@ -12,8 +12,8 @@ def quicksort(array):
 def quick_sort(array, low, high):
     if low < high:
         sort_part = seperation(array, low, high)
-        quick_sort(array, low, parted - 1)
-        quick_sort(array, parted+1, high)
+        quick_sort(array, low, sort_part - 1)
+        quick_sort(array, sort_part+1, high)
 
 
 def seperation(array, low, high):
@@ -23,7 +23,7 @@ def seperation(array, low, high):
     while True:
         while start <= end and array[start] <= pivot:
             start += 1
-        while start <= end and array[start] >= pivot:
+        while start <= end and array[end] >= pivot:
             end -= 1
         if start <= end:
             array[start], array[end] = array[end], array[start]
