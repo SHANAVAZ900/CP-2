@@ -7,11 +7,11 @@
 
 
 def isrotation(x, y):
-    # Your code goes here
-    first, last = str(x), str(y)
-    if len(first) != len(last):
+    s1, s2 = str(x), str(y)
+    if len(s1) != len(s2):
         return False
-    for i in range(len(first)):
-        if first[i:] + first[:i] == last or first[len(first) - i:] + first[:len(first) - i] == last:
+    for i in range(len(s1)):
+
+        if s1[i:] + s1[:i] == s2 or s1[len(s1) - i:] + s1[:len(s1) - i] == s2:
             return True
     return False
