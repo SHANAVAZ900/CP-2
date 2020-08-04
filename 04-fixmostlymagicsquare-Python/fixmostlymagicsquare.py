@@ -8,18 +8,37 @@
 
 def fixmostlymagicsquare(L):
     # Your code goes here
-    m = len(L)
-    r = [sum[i] for i in L]
-    c = [0] * m
-    for i in range(m):
-        for j in range(m):
-            c[j] += L[i][j]
-    for j in r:
-        if r.count(j) == 1:
-            k = j
-        elif r.count(j) > 1:
-            n = j
-    position1 = r.index(k)
-    position2 = c.index(k)
-    L[position1][position2] -= k-n
+    row, diff = which_row(L)
+
+    col, diff = which_col(L)
+
+    L[row][col] += diff
     return L
+
+
+def which_row(L):
+    r = []
+    for i in L:
+        add = 0
+        for j in i:
+            add += j
+        if add in rows:
+            right = add
+        rows.append(add)
+    for i in range(len(rows)):
+        if rows[i] != right:
+            return i, right-rows[i]
+
+
+def which_col(L):
+    c = []
+    for i in range(len(L)):
+        add = 0
+        for j in range(len(L)):
+            add += L[j][i]
+        if add in c:
+            right = add
+        c.append(add)
+    for i in range(len(c)):
+        if c[i] != right:
+            return i, right-c[i]
