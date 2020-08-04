@@ -8,8 +8,8 @@
 
 def multipolynomials(p1, p2):
     # Your code goes here
-    total = [0] * (len(p1) + len(p2)-1)
+    total = [0] * (len(p1) + len(p2) - 1)
     for j in range(len(p1)):
         for k in range(len(p2)):
-            total[j + k] += p1[j] + p2[k]
+            total[j + k] += p1[j] * p2[k]
     return total
