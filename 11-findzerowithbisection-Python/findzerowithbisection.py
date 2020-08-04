@@ -4,8 +4,22 @@
 # Bisection search works when value of function varies monotonically with input
 # If g, the users input/guess, is less than/greater than the midpoint of the range, then that number becomes the new high point of said range and is then factored into the new search.
 
+
 def findzerowithbisection(x, epsilon):
-	# epsilon and step are initialized
-	# don't change these values
-	# epsilon
-	# your code starts here
+    # epsilon and step are initialized
+    # don't change these values
+    # epsilon
+    # your code starts here
+    top = x
+    bottom = 0
+    let = 0
+    while True:
+        let = (top + bottom) / 2.0
+        sub = (let ** 2) - x
+        if abs(sub) <= epsilon:
+            break
+        if let**2 < x:
+            bottom = let
+        else:
+            top = let
+    return let
