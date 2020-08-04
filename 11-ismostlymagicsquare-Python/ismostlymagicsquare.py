@@ -1,9 +1,9 @@
 # isMostlyMagicSquare(a) [15 pts]
-# Write the function isMostlyMagicSquare(a) that takes an 2d list of numbers, which you may assume is an NxN square 
+# Write the function isMostlyMagicSquare(a) that takes an 2d list of numbers, which you may assume is an NxN square
 # with N>0, and returns True if it is "mostly magic" and False otherwise, where a square is "mostly magic" if:
 # Each row, each column, and each of the 2 diagonals each sum to the same total.
-# A completely magic square has additional restrictions (such as not allowing duplicates, and only allowing numbers 
-# from 1 to N2), which we are not enforcing here, but which you can read about here. Note: any magic square is also 
+# A completely magic square has additional restrictions (such as not allowing duplicates, and only allowing numbers
+# from 1 to N2), which we are not enforcing here, but which you can read about here. Note: any magic square is also
 # a "mostly magic" square, including this sample magic square:
 # Read for more: https://en.wikipedia.org/wiki/Magic_square
 # Here is another mostly-magic square:
@@ -13,6 +13,19 @@
 #   [ 2, 1]]
 # Each row and each column add to 3, but one diagonal adds to 2 and the other to 4.
 
+
 def ismostlymagicsquare(a):
-	# Your code goes here
-	pass
+    # Your code goes here
+    full = len(a)
+    full_sum = sum(a[0])
+    for i in a[1:]:
+        if full_sum != sum(i):
+            return False
+    j, first, last = 0, [], []
+    for k in a:
+        first.append(k[j])
+        last.append(k[full - 1 - j])
+        j += 1
+    if sum(first) != full_sum or sum(last) != full_sum:
+        return True
+    return False
