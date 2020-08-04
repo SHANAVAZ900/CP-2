@@ -18,14 +18,12 @@
 
 def fun_wordwrap(s, n):
     s = s.strip()
-    total = ""
-    k = 0
-    while k < len(s):
-        total += s[k: k+n] + '\n'
-        k += n
-        if len(s) - k < n:
-            total += s[k:] + '\n'
+    result = ""
+    i = 0
+    while i < len(s):
+        result += s[i:i + n] + '\n'
+        i += n
+        if len(s) - i < n:
+            result += s[i:]+'\n'
             break
-    return total.replace(" ", "_").rstrip('\n')
-
-    return ""
+    return result.replace(" ", "-").rstrip('\n')
