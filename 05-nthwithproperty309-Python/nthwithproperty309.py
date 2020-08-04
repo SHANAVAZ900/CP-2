@@ -6,12 +6,11 @@
 
 
 def nthwithproperty309(n):
-    # Your code goes here
     calc, num = 0, 309
     note = list("0123456789")
     while calc < n:
         num += 1
-        star5 = (num) ** (5)
+        star5 = num ** 5
         note1 = list(str(star5))
         if set(note).issubset(set(note1)):
             calc += 1
