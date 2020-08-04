@@ -6,20 +6,12 @@
 
 
 def nthwithproperty309(n):
-
-    pow = 1
-    answer = 0
-
-    # Go through every bit of n
-    while (n):
-
-        pow = pow*5
-
-        # If last bit of n is set
-        if (n & 1):
-            answer += pow
-
-        # proceed to next bit
-        n >>= 1  # or n = n/2
-
-    return answer
+    calc, num = 0, 309
+    note = list("0123456789")
+    while calc < n:
+        num += 1
+        star5 = num ** 5
+        note1 = list(str(star5))
+        if set(note).issubset(set(note1)):
+            calc += 1
+    return num
