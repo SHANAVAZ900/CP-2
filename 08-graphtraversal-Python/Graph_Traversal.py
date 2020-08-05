@@ -4,6 +4,7 @@ class Node(object):
         self.edges = []
         self.visited = False
 
+
 class Edge(object):
     def __init__(self, value, node_from, node_to):
         self.value = value
@@ -16,6 +17,7 @@ class Edge(object):
 # Specifically: Graph.set_node_names
 # and the methods ending in "_names" which will print names instead
 # of node numbers
+
 
 class Graph(object):
     def __init__(self, nodes=None, edges=None):
@@ -79,7 +81,7 @@ class Graph(object):
         for edg in self.edges:
             from_value, to_value = edg.node_from.value, edg.node_to.value
             adjacency_list[from_value].append((to_value, edg.value))
-        return [a or None for a in adjacency_list] # replace []'s with None
+        return [a or None for a in adjacency_list]  # replace []'s with None
 
     def get_adjacency_list_names(self):
         """Each section in the list will store a list
@@ -88,9 +90,11 @@ class Graph(object):
         Node names should come from the names set
         with set_node_names."""
         adjacency_list = self.get_adjacency_list()
+
         def convert_to_names(pair, graph=self):
             node_number, value = pair
             return (graph.node_names[node_number], value)
+
         def map_conversion(adjacency_list_for_node):
             if adjacency_list_for_node is None:
                 return None
@@ -126,7 +130,7 @@ class Graph(object):
     def find_node(self, node_number):
         "Return the node with value node_number or None"
         return self._node_map.get(node_number)
-    
+
     def _clear_visited(self):
         for node in self.nodes:
             node.visited = False
@@ -140,7 +144,19 @@ class Graph(object):
         MODIFIES: the value of the visited property of nodes in self.nodes 
         RETURN: a list of the traversed node values (integers).
         """
-        pass
+        x = self.get_adjacency_list()[start_node.value]
+        start_node.visited = True
+        if x == None:
+            return []
+        arr = [start_node.value]
+        print(arr)
+        for edge in x:
+            num = edge[0]
+            print(num)
+            new_node = self.find_node(num)
+            if not new_node.visited:
+                arr = arr + self.dfs_helper(new_node)
+        return arr
 
     def dfs(self, start_node_num):
         """Outputs a list of numbers corresponding to the traversed nodes
@@ -163,11 +179,30 @@ class Graph(object):
         ARGUMENTS: start_node_num is the node number (integer)
         MODIFIES: the value of the visited property of nodes in self.nodes
         RETURN: a list of the node values (integers)."""
-        pass
+        self._clear_visited()
+        arr = [start_node_num]
+        node = self.find_node(start_node_num)
+        final = []
+        node.visited = True
+        while len(arr) != 0:
+            num = arr.pop(0)
+            print(num)
+            final.append(num)
+            x = self.get_adjacency_list()[num]
+            if x == None:
+                continue
+            for edge in x:
+                num = edge[0]
+                print("edge nums", num)
+                node = self.find_node(num)
+                if not node.visited:
+                    node.visited = True
+                    arr.append(num)
+        print("arr", arr)
+        print("final", final)
+        return final
 
     def bfs_names(self, start_node_num):
         """Return the results of bfs with numbers converted to names."""
-        del ret_list[0 : len(ret_list)]
+        del ret_list[0: len(ret_list)]
         return [self.node_names[num] for num in self.bfs(start_node_num)]
-
-
