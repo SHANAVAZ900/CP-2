@@ -5,7 +5,7 @@
 
 
 def fun_recursions_alternatingsum(l):
-    return fun_alternating_sum(1, 0, 0)
+    return fun_alternating_sum(l, 0, 0)
 
 
 def fun_alternating_sum(r, i, s):
