@@ -9,7 +9,7 @@
 # for primality (and you may need to think about that hint for a while for it to make sense!).
 
 
-def fun_nth_cprime(n):
+def fun_nth_carolprime(n):
     prime_num = []
     i = 2
     while len(prime_num) != n+1:
